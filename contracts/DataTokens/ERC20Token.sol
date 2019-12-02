@@ -1,7 +1,7 @@
 pragma solidity 0.5.6;
 
-import 'openzeppelin-solidity/contracts/token/ERC20/ERC20.sol';
-import 'openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol';
+import 'openzeppelin-eth/contracts/token/ERC20/ERC20.sol';
+import 'openzeppelin-eth/contracts/token/ERC20/ERC20Detailed.sol';
 
 contract ERC20Token is ERC20Detailed, ERC20 {
 
