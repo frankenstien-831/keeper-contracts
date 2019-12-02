@@ -1,8 +1,8 @@
 pragma solidity 0.5.6;
 
-import 'openzeppelin-eth/contracts/token/ERC721/ERC721Full.sol';
-import 'openzeppelin-eth/contracts/token/ERC721/ERC721Burnable.sol';
-import 'openzeppelin-eth/contracts/ownership/Ownable.sol';
+import 'zeppelin-solidity/contracts/token/ERC721/ERC721Full.sol';
+import 'zeppelin-solidity/contracts/token/ERC721/ERC721Burnable.sol';
+import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract ERC721Token is ERC721Full, ERC721Burnable, Ownable {
 

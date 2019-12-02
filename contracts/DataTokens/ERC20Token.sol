@@ -1,9 +1,9 @@
 pragma solidity 0.5.6;
 
-import 'openzeppelin-eth/contracts/token/ERC20/ERC20.sol';
-import 'openzeppelin-eth/contracts/token/ERC20/ERC20Detailed.sol';
+import 'zeppelin-solidity/contracts/token/ERC20/ERC20.sol';
+import 'zeppelin-solidity/contracts/token/ERC20/DetailedERC20.sol';
 
-contract ERC20Token is ERC20Detailed, ERC20 {
+contract ERC20Token is DetailedERC20, ERC20 {
 
     using SafeMath for uint256;
 
@@ -11,7 +11,7 @@ contract ERC20Token is ERC20Detailed, ERC20 {
 
     constructor (string memory name, string memory symbol)
         public
-        ERC20Detailed(name, symbol, DECIMALS) {}
+        DetailedERC20(name, symbol, DECIMALS) {}
 
     /**
      * @dev Function to mint tokens
