@@ -1,6 +1,6 @@
 {
   "name": "@oceanprotocol/keeper-contracts",
-  "version": "0.13.1",
+  "version": "0.13.2",
   "description": "Integration of SEAs, DID and OceanToken in Solidity",
   "bugs": {
     "url": "https://github.com/oceanprotocol/keeper-contracts/issues"
@@ -51,7 +51,8 @@
     "doc:addresses": "node scripts/contracts/get-addresses.js",
     "doc:copyright": "scripts/add-spdx.sh",
     "clean": "npm run clean:build && npm run clean:coverage && npm run clean:zos",
-    "clean:build": "rm -rf ./build/ ./artifacts/*.development.json ./artifacts/*.spree.json",
+    "clean:tmp": "mkdir tmp && cp ./artifacts/EscrowAccessSecretStoreTemplate.development.json ./artifacts/EscrowComputeExecutionTemplate.development.json ./tmp/",
+    "clean:build": "npm run clean:tmp ; rm -rf ./build/ ./artifacts/*.development.json ./artifacts/*.spree.json; mv ./tmp/* ./artifacts/; rm -rf ./tmp",
     "clean:coverage": "rm -rf ./coverage/ ./coverageEnv/ ./coverage.json",
     "clean:zos": "rm -rf ./zos.json ./zos.dev-8996.json ./.zos.session ./wallets.json zos/",
     "lint": "npm run lint:eslint && npm run lint:ethlint",
@@ -80,23 +81,23 @@
   "author": "Ocean Protocol",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@oceanprotocol/multisigwallet": "git+https://github.com/oceanprotocol/MultiSigWalletContracts.git#v2.0.4",
     "@oceanprotocol/dori": "~0.5.1",
+    "@oceanprotocol/multisigwallet": "git+https://github.com/oceanprotocol/MultiSigWalletContracts.git#v2.0.4",
     "bignumber.js": "^9.0.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "eslint": "^6.4.0",
+    "eslint": "^6.8.0",
     "eslint-config-oceanprotocol": "^1.5.0",
     "glob": "^7.1.6",
-    "mathjs": "~6.2.2",
+    "mathjs": "~6.6.0",
     "openzeppelin-eth": "^2.2.0",
     "solidity-coverage": "0.6.3",
     "solium": "^1.2.5",
     "solium-plugin-security": "^0.1.1",
-    "truffle": "5.1.4",
+    "truffle": "5.1.14",
     "truffle-contract": "~4.0.31",
     "truffle-hdwallet-provider": "~1.0.17",
-    "web3": "1.2.4",
+    "web3": "1.2.6",
     "web3-provider-engine": "~15.0.3",
     "yargs": "~15.0.1"
   }

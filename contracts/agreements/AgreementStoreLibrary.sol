@@ -36,10 +36,10 @@ library AgreementStoreLibrary {
         mapping(bytes32 => mapping(address => bytes32)) AgreementActor;
     }
     
-    event AgreementActorAdded(
-        bytes32 indexed agreementId,
-        address indexed actor
-    );
+    struct AgreementActorsList {
+        mapping(bytes32 => address[]) ActorsList;
+    }
+    
     /**
      * @dev create new agreement
      *      checks whether the agreement Id exists, creates new agreement 
@@ -81,32 +81,81 @@ library AgreementStoreLibrary {
     }
     
     /**
-     * @dev setActors set a mapping between actors and their types
+     * @dev setActorType set a mapping between actors and their types.
+     * The stored type is the hash of the string format of an actor type 
+     * (consumer, provider, verifier, publisher, curator, etc).
      * @param _self is AgreementActors storage pointer
      * @param _id agreement identifier
-     * @param _actors actors addresses
-     * @param _actorTypes actors types (consumer, provider, verifier, publisher, curator)
+     * @param _actor actor address
+     * @param _actorType actor type hash
      */
-    function setActors(
+    function setActorType(
         AgreementActors storage _self,
         bytes32 _id,
-        address[] memory _actors,
-        bytes32[] memory _actorTypes
+        address _actor,
+        bytes32 _actorType
     )
         internal
     {
         require(
-            _actors.length == _actorTypes.length,
-            'Invalid actor/actor types array length'
+            _self.AgreementActor[_id][_actor] == bytes32(0) && 
+            _actor != address(0),
+            'Actor already exists'
         );
-        
-        for(uint256 i=0; i < _actors.length; i++)
-        {
-            _self.AgreementActor[_id][_actors[i]] = _actorTypes[i];
-            emit AgreementActorAdded(
-                _id,
-                _actors[i]
-            );
-        }
+        _self.AgreementActor[_id][_actor] = _actorType;
+    }
+
+    /**
+     * @dev getActorType for a given agreement Id, returns the actor type
+     * @param _self is AgreementActors storage pointer
+     * @param _id agreement identifier
+     * @param _actor actor address
+     * @return bytes32 actor type
+     */
+    function getActorType(
+        AgreementActors storage _self,
+        bytes32 _id,
+        address _actor
+    )
+        internal
+        view
+        returns ( bytes32 actorType )
+    {
+        actorType = _self.AgreementActor[_id][_actor];
+    }
+    
+    /**
+     * @dev setActors associate actor addresses to an agreement
+     * @param _self is AgreementActorsList storage pointer
+     * @param _id agreement identifier
+     * @param _actors array of actor addresses
+     */
+    function setActors(
+        AgreementActorsList storage _self,
+        bytes32 _id,
+        address[] memory _actors
+    )
+        internal
+    {
+        _self.ActorsList[_id] = _actors;
+    }
+    
+    /**
+     * @dev getActors actor addresses for an agreement
+     * @param _self is AgreementActorsList storage pointer
+     * @param _id agreement identifier
+     * @return _actors array of actor addresses
+     */
+    function getActors(
+        AgreementActorsList storage _self,
+        bytes32 _id
+    )
+        internal
+        view
+        returns ( 
+            address[] memory _actors
+        )
+    {
+        return _self.ActorsList[_id];
     }
 }
