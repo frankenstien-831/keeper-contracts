@@ -1,5 +1,6 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d03f217b9aec4e3e942b432f8388bcb2)](https://app.codacy.com/manual/frankenstien-831/keeper-contracts?utm_source=github.com&utm_medium=referral&utm_content=frankenstien-831/keeper-contracts&utm_campaign=Badge_Grade_Dashboard)
 [![banner](https://raw.githubusercontent.com/oceanprotocol/art/master/github/repo-banner%402x.png)](https://oceanprotocol.com)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ffrankenstien-831%2Fkeeper-contracts.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Ffrankenstien-831%2Fkeeper-contracts?ref=badge_shield)
 
 # keeper-contracts
 
@@ -40,6 +41,9 @@
   - [License](#license)
 
 ---
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ffrankenstien-831%2Fkeeper-contracts.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Ffrankenstien-831%2Fkeeper-contracts?ref=badge_large)
 
 ## Get Started
 
@@ -346,4 +350,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
